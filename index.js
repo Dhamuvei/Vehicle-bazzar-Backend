@@ -20,7 +20,7 @@ config();
     "mongodb://localhost:27017/BikeBazar",
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => {
-      console.log(`database connected with ${process.env.DBURL}`);
+      console.log(`database connected with mongodb://localhost:27017/BikeBazar`);
     }
   );
 
