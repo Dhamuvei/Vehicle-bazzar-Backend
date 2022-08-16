@@ -6,8 +6,9 @@ const cors = require("cors");
 const middleware = require("./shared/middleware")
 const routers = require("./Router/index");
 const App = express();
+require("dotenv").config();
 
-const PORT = 2580;
+const PORT = process.env.PORT||3698;
 
 
 //dotenv
@@ -17,10 +18,10 @@ config();
   //db
 
   await mongoose.connect(
-    "mongodb://localhost:27017/BikeBazar",
+    process.env.DBURL,
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => {
-      console.log(`database connected with mongodb://localhost:27017/BikeBazar`);
+      console.log(`database connected with ${process.env.DBURL}`);
     }
   );
 
