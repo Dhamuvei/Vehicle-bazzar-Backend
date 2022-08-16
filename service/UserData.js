@@ -47,19 +47,19 @@ const backendData = {
   },
   async findByUserId(req, res) {
     try {
-      const findUser = await Ownerdata1.findOne({userId:req.params.userId});
+      const findUser = await Ownerdata1.findOne({ userId: req.params.userId });
       res.send(findUser);
     } catch (err) {
       res.status(400).json("Error in Find By UserId");
     }
   },
-  async deleteUser(req,res){
-    try{
-var delUser = await Ownerdata1.findByIdAndDelete(req.params.id)
-res.send(delUser)
-    }catch(err){
-    res.state(400).json("data have been deleted")
+  async deleteUser(req, res) {
+    try {
+      var delUser = await Ownerdata1.findByIdAndDelete({ _id: req.params.id });
+      res.send(delUser);
+    } catch (err) {
+      res.state(400).json("data have been deleted");
     }
-  }
+  },
 };
 module.exports = backendData;
