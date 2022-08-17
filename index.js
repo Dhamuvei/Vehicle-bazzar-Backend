@@ -29,6 +29,9 @@ config();
   App.use(cors());
   App.use(morgon("dev"));
   App.use(express.json({ limit: '200mb' }));
+  app.get("/", (req, res) =>
+  res.send(`Server Running`)
+);
   // App.use(middleware.auth);
   console.log(`middleware initialized successfuly`);
 
