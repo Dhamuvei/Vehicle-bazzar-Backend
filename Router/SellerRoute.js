@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const condition = require("../service/UserData");
+const condition = require("../service/SellerCondition");
 
 router.post("/post",condition.postUserData1);
 router.get("/get",condition.getallData);

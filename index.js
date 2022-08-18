@@ -3,7 +3,6 @@ const { config } = require("dotenv");
 const mongoose = require("mongoose");
 const morgon = require("morgan");
 const cors = require("cors");
-const middleware = require("./shared/middleware")
 const routers = require("./Router/index");
 const App = express();
 require("dotenv").config();
@@ -29,15 +28,16 @@ config();
   App.use(cors());
   App.use(morgon("dev"));
   App.use(express.json({ limit: '200mb' }));
-  app.get("/", (req, res) =>
+  App.get("/", (req, res) =>
   res.send(`Server Running`)
 );
   // App.use(middleware.auth);
   console.log(`middleware initialized successfuly`);
 
   //Route
-  App.use("/auth", routers.authRouter);
-  App.use("/UserData1", routers.Userdata);
+  App.use("/Sellerauth", routers.SellerAuth);
+  App.use("/Buyerauth", routers.BuyerAuth);
+  App.use("/SellerData", routers.Userdata);
   console.log(`routers initialized`);
 
   //port

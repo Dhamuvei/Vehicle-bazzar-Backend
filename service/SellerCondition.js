@@ -1,9 +1,9 @@
-const Ownerdata1 = require("../Shema/Userdata1");
+const SellerData = require("../Shema/SelleerPostData");
 const ObjectId = require("mongodb").ObjectId;
 const backendData = {
   async postUserData1(req, res) {
     try {
-      const RegData1 = new Ownerdata1({
+      const RegData1 = new SellerData({
         RegistrationNumber: req.body.RegistrationNumber,
         BikeBrand: req.body.BikeBrand,
         BikeYear: req.body.BikeYear,
@@ -31,7 +31,7 @@ const backendData = {
   },
   async getallData(req, res) {
     try {
-      const getAllDatas = await Ownerdata1.find();
+      const getAllDatas = await SellerData.find();
       res.status(200).json(getAllDatas);
     } catch (err) {
       res.state(404).json("Error from getting user datas");
@@ -39,7 +39,7 @@ const backendData = {
   },
   async findById(req, res) {
     try {
-      const findData = await Ownerdata1.findById(req.params.id);
+      const findData = await SellerData.findById(req.params.id);
       res.send(findData);
     } catch (err) {
       res.status(400).json("Error in Find By Id");
@@ -47,7 +47,7 @@ const backendData = {
   },
   async findByUserId(req, res) {
     try {
-      const findUser = await Ownerdata1.findOne({ userId: req.params.userId });
+      const findUser = await SellerData.findOne({ userId: req.params.userId });
       res.send(findUser);
     } catch (err) {
       res.status(400).json("Error in Find By UserId");
@@ -55,7 +55,7 @@ const backendData = {
   },
   async deleteUser(req, res) {
     try {
-      var delUser = await Ownerdata1.findByIdAndDelete({ _id: req.params.id });
+      var delUser = await SellerData.findByIdAndDelete({ _id: req.params.id });
       res.send(delUser);
     } catch (err) {
       res.state(400).json("data have been deleted");

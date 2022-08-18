@@ -1,23 +1,22 @@
-const RegisterdUsers = require("../Shema/authregister");
+const BuyerSignUp = require("../Shema/BuyerAuthScema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 
-const validuser = (req,res,next)=>{
-  var token = req.header('auth');
-  req.token = token;
-  next();
-}
-const services = {
+
+const Buyerservices = {
   async Register(req, res) {
     try {
-      var emailExist = await RegisterdUsers.findOne({ email: req.body.email });
+      var emailExist = await BuyerSignUp.findOne({ email: req.body.email });
       if (emailExist) {
         return res.status(400).json("Email already Exist da dhamuuuuuu...");
       }
       //password HASH
       var hash = await bcrypt.hash(req.body.password, 10);
-      const RegData = new RegisterdUsers({
+      const RegData = new BuyerSignUp({
+        fname:req.body.fname,
+        lname:req.body.lname,
+        number:req.body.number,
         username: req.body.username,
         email: req.body.email,
         password: hash,
@@ -34,7 +33,7 @@ const services = {
 
   async Login(req, res) {
     try {
-      var userdata = await RegisterdUsers.findOne({ email: req.body.email });
+      var userdata = await BuyerSignUp.findOne({ email: req.body.email });
       if (!userdata) {
         return res
           .status(400)
@@ -47,13 +46,14 @@ const services = {
       }
       var userToken = jwt.sign(
         { email: userdata.email,_id:userdata._id },
-        `Thambi.. soldradhuku illa😏`,{expiresIn:"10h"}
+        process.env.SECRETKEY,{expiresIn:"10h"}
       );
       res.send(userToken)
     } catch (err) {
       res.status(400).send({error:error.message});
     }
   },
+
 };
 
-module.exports = services;
+module.exports = Buyerservices

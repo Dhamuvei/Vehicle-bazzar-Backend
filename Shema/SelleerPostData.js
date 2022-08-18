@@ -76,5 +76,5 @@ const UserData1 = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Ownerdata1", UserData1);
+module.exports = mongoose.model("SellerData", UserData1);
 

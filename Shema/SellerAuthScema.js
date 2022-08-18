@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
-var validateEmail = function(email) {
-  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email)
-}
+
 const Registerschema = mongoose.Schema({
   username: {
     type: String,
@@ -22,10 +19,6 @@ const Registerschema = mongoose.Schema({
     type: String,
     requried: true,
   },
-  // ConfirmPassword: {
-  //   type: String,
-  //   requried: true,
-  // },
 });
 
-module.exports = mongoose.model("RegisterdUsers", Registerschema);
+module.exports = mongoose.model("RegisterdSeller", Registerschema);
