@@ -1,4 +1,4 @@
-const BuyerSignUp = require("../Shema/BuyerAuthScema");
+const BuyerSignUp = require("../Schema/BuyerAuthScema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -33,6 +33,7 @@ const Buyerservices = {
 
   async Login(req, res) {
     try {
+
       var userdata = await BuyerSignUp.findOne({ email: req.body.email });
       if (!userdata) {
         return res
@@ -45,7 +46,7 @@ const Buyerservices = {
         
       }
       var userToken = jwt.sign(
-        { email: userdata.email,_id:userdata._id },
+        {email: userdata.email,_id:userdata._id},
         process.env.SECRETKEY,{expiresIn:"10h"}
       );
       res.send(userToken)

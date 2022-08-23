@@ -1,4 +1,4 @@
-const RegisterdSeller = require("../Shema/SellerAuthScema");
+const RegisterdSeller = require("../Schema/SellerAuthScema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 

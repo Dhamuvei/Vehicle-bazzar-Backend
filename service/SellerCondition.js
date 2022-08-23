@@ -1,5 +1,6 @@
-const SellerData = require("../Shema/SelleerPostData");
-const ObjectId = require("mongodb").ObjectId;
+const SellerData = require("../Schema/SelleerPostData");
+
+
 const backendData = {
   async postUserData1(req, res) {
     try {

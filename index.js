@@ -37,7 +37,10 @@ config();
   //Route
   App.use("/Sellerauth", routers.SellerAuth);
   App.use("/Buyerauth", routers.BuyerAuth);
-  App.use("/SellerData", routers.Userdata);
+ App.use("/BuyerData",routers.BuyerData)
+  App.use("/SellerData", routers.Sellerdata);
+  App.use("/feedback",routers.feedBack);
+  App.use("/BuyerMail",routers.BuyerMailService);
   console.log(`routers initialized`);
 
   //port

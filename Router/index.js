@@ -1,9 +1,10 @@
-
 const routers = {
-    SellerAuth : require("./SellerAuth.rout"),
-    Userdata    :require("./SellerRoute"),
-    BuyerAuth  :  require("./BuyerAuth.route")
+  SellerAuth: require("./SellerAuth.rout"),
+  Sellerdata: require("./SellerRoute"),
+  BuyerAuth: require("./BuyerAuth.route"),
+  BuyerData: require("./BuyerRout"),
+  feedBack:require("./FeedBackRoute"),
+  BuyerMailService:require("./BuyerMail.Route")
+};
 
-}
-
-module.exports = routers
+module.exports = routers;
