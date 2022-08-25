@@ -7,8 +7,7 @@ const routers = require("./Router/index");
 const App = express();
 require("dotenv").config();
 
-const PORT = process.env.PORT||3698;
-
+const PORT =
 
 //dotenv
 config();
@@ -44,5 +43,7 @@ config();
   console.log(`routers initialized`);
 
   //port
-  App.listen(PORT, console.log(`Server Listening to the port :- ${PORT}`));
+  App.listen( process.env.PORT||5000
+    , console.log(`Server Listening to the port :- ${ process.env.PORT
+    }`));
 })();
