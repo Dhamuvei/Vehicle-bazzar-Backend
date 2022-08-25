@@ -19,10 +19,10 @@ const BuyerMailservice = {
         subject:`Message from ${data.BuyerName}`,
         html:`<h3>Hai ${data.sellerName}</h3>
         <ul>
-        <li> Name:${data.BuyerName}</li>
-        <li> Number:${data.number}</li>
-        <li> Email:${data.Byeremail}</li>
-        <li> ${data.iptText}</li>
+        <li> Name:- ${data.BuyerName}</li>
+        <li> Number:- ${data.BuyerNumber}</li>
+        <li> Email:- ${data.Byeremail}</li>
+        <li> Message:-cls ${data.iptText}</li>
         </ul>`
     };
 
