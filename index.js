@@ -7,7 +7,7 @@ const routers = require("./Router/index");
 const App = express();
 require("dotenv").config();
 
-const PORT =
+const port = process.env.PORT || 5000;
 
 //dotenv
 config();
@@ -19,31 +19,27 @@ config();
     process.env.DBURL,
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => {
-      console.log(`database connected with ${process.env.DBURL}`);
+      console.log('database connected');
     }
   );
 
   //Minddleware
   App.use(cors());
   App.use(morgon("dev"));
-  App.use(express.json({ limit: '200mb' }));
-  App.get("/", (req, res) =>
-  res.send(`Server Running`)
-);
+  App.use(express.json({ limit: "200mb" }));
+  App.get("/", (req, res) => res.send(`Server Running`));
   // App.use(middleware.auth);
   console.log(`middleware initialized successfuly`);
 
   //Route
   App.use("/Sellerauth", routers.SellerAuth);
   App.use("/Buyerauth", routers.BuyerAuth);
- App.use("/BuyerData",routers.BuyerData)
+  App.use("/BuyerData", routers.BuyerData);
   App.use("/SellerData", routers.Sellerdata);
-  App.use("/feedback",routers.feedBack);
-  App.use("/BuyerMail",routers.BuyerMailService);
+  App.use("/feedback", routers.feedBack);
+  App.use("/BuyerMail", routers.BuyerMailService);
   console.log(`routers initialized`);
 
   //port
-  App.listen( process.env.PORT||5000
-    , console.log(`Server Listening to the port :- ${ process.env.PORT
-    }`));
+  App.listen(port, console.log(`Server Listening to the port :- ${port}`));
 })();
